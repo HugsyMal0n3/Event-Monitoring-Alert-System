@@ -1,0 +1,29 @@
+DB Schema
+
+ADD INDEX timestamp
+ADD INDEX anomaly_type
+
+timestamp: created_at & updated_at -> for auditing?
+
+1. Wave Reading
+    -> id (primary key)
+    -> timestamp (datetime)
+        >UNIQUE CONSTRAINT
+    -> wave_height_m (float)
+    -> wave_period_s (float)
+    -> location (foreign key > Sensor Location)
+        >UNIQUE CONSTRAINT
+
+2. Sensor Location
+    -> id
+    -> name (string)
+    -> location (string / coordinates)
+        >UNIQUE CONSTRAINT
+
+3. Anomaly
+    -> id (primary key)
+    -> reading_id (foreign key > Wave Reading)
+    -> anomaly_type (spike, drop, slope)
+    -> severity? (minor, major, critical)
+    -> detected_at (datetime)
+    -> metadata? (JSON)

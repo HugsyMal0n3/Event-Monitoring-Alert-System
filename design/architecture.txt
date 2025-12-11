@@ -1,0 +1,19 @@
+Ingestion class -> handles incoming data
+Storage class -> DB interactions
+Analytics class -> anomaly detection
+Alerting class -> sends notifications
+Notification class -> variety of notification methods (polymorphism)
+
+Ingestion -> Storage -> Analytics ->  (if there is any anomalous readings) -> Notification -> Alerting
+    ^                       ^
+    |                       |
+(HTTP / CSV upload)   (async via Celery / Redis)
+
+Cloud considerations:
+Azure Redis Cache as broker for Celery tasks.
+Azure Cloud Storage.
+Azure Blob Storage for raw CSV/JSON uploads.
+
+Deploy Django dashboard on Azure App Service, protect with OAuth2 / JWT.
+
+Historical analytics?

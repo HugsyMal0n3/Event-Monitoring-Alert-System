@@ -1,0 +1,51 @@
+1. Testing
+    -> Create test data
+    -> Unit tests for: 
+        > Ingestion,
+        > Transformation
+        > Validation
+        > Storage 
+        > Anomaly detection
+        > Alerting
+        > Visualisation
+
+2. Ingestion API
+    -> Accept time-series data (wave height (meters), wave period (seconds))
+    -> Input CSV / Excel files
+        > Redis to cache the files
+        > Pagination, streaming, or Django console to parse files in chunks. 
+
+3. ETL Data-pipeline
+    -> CSV / Excel to parquet file format
+    -> dtypes compressed 
+        > Redis with Celery to queue file chunks for async operations
+            reading to the DB doesn't block anomaly detection and alerts.
+
+4. Data Validation
+    -> Pandas missing or TypeError validation
+    -> Django REST validation
+    -> Schema validation
+        > transaction.atomic() for data consistecncy
+
+5. Data Storage
+    -> Store in PostgreSQL
+    -> Each entry: timestamp | wave_height | wave_period
+
+6. Anomaly Detection
+    -> Detect abnormal wave events:
+        > Spikes (sudden high waves)
+        > Drops (sensor failure / flatline)
+        > Rapid changes (unexpected slope)
+
+7. Anomaly Storage
+    -> Store detected anomalies in separate table
+
+8. Alerting
+    -> Dashboard lists anomalies
+    -> Send notification
+
+9. Visualisation
+    -> Dashboard showing time-series graph of waves
+    -> Highlight anomalies
+
+10. Extensibility

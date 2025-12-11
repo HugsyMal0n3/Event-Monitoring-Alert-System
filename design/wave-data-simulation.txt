@@ -1,0 +1,14 @@
+Pandas Test DataFrame
+
+Wave equation (sine/cosine waves) for periodic signals.
+Time-series structure
+Random anomalies
+timestamp
+location ID
+
+Wave amplitude, period, frequency, and anomaly.
+
+Anomaly types:
+Sudden spike: single reading higher than mean
+Flatline: repeated identical readings
+Rapid slope: consecutive readings changing too quickly
