@@ -6,7 +6,7 @@ ADD INDEX anomaly_type
 timestamp: created_at & updated_at -> for auditing?
 
 1. Wave Reading
-    -> id (primary key)
+    -> id
     -> timestamp (datetime)
         >UNIQUE CONSTRAINT
     -> wave_height_m (float)
@@ -21,8 +21,8 @@ timestamp: created_at & updated_at -> for auditing?
         >UNIQUE CONSTRAINT
 
 3. Anomaly
-    -> id (primary key)
-    -> reading_id (foreign key > Wave Reading)
+    -> id
+    -> reading_id (foreign key > Wave Reading id)
     -> anomaly_type (spike, drop, slope)
     -> severity? (minor, major, critical)
     -> detected_at (datetime)
